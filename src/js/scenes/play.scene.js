@@ -5,12 +5,12 @@ class ScenePlay extends Phaser.Scene {
 
 
     preload() {
-        // load image example
-        // this.load.image('sky', '../assets/sky.png');
+        // load background image
+        this.load.image('background00', '../assets/images/backgrounds/parallax-mountain-bg.png');
 
 
         // load spritesheets
-        // this.load.spritesheet('ss-player', '../assets/spritesheets/player.png', {
+        // this.load.spritesheet('ss-player', '../assets/spritesheets/parallax-mountain-bg.png', {
         //     frameWidth: 16,
         //     frameHeight: 48
         // });
@@ -21,8 +21,19 @@ class ScenePlay extends Phaser.Scene {
     create() {
         // var self = this;
 
-        // create example image
-        // this.add.image(0, 0, 'sky').setOrigin(0, 0);
+        // show background image
+        this.background00 = this.add.image(0, 0, 'background00').setOrigin(0, 0);
+        // resize to fill game area
+        if (this.background00.height * gameConfig.width / this.background00.width >= gameConfig.height) {
+            this.background00.displayWidth = gameConfig.width;
+            this.background00.displayHeight = this.background00.height * gameConfig.width / this.background00.width;
+        } else {
+            this.background00.displayHeight = gameConfig.height;
+            this.background00.displayWidth = this.background00.width * gameConfig.height / this.background00.height;
+        }
+
+
+
 
 
         // create animations
