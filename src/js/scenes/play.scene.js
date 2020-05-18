@@ -22,14 +22,19 @@ class ScenePlay extends Phaser.Scene {
         // var self = this;
 
         // show background image
-        this.background00 = this.add.image(0, 0, 'background00').setOrigin(0, 0);
+        this.background00 = this.add.image(0, 0, 'background00').setOrigin(0, 0);;
+
         // resize to fill game area
         if (this.background00.height * gameConfig.width / this.background00.width >= gameConfig.height) {
             this.background00.displayWidth = gameConfig.width;
             this.background00.displayHeight = this.background00.height * gameConfig.width / this.background00.width;
+            // center vertically
+            this.background00.setPosition(0, (gameConfig.height - this.background00.displayHeight)/2);
         } else {
             this.background00.displayHeight = gameConfig.height;
             this.background00.displayWidth = this.background00.width * gameConfig.height / this.background00.height;
+            // center horizontally
+            this.background00.setPosition((gameConfig.width - this.background00.displayWidth)/2, 0);
         }
 
 
